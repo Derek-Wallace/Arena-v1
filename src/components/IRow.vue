@@ -1,7 +1,7 @@
 <template>
   <div class="row d-flex">
-        <div class="spot">I1</div>
-        <div class="spot">I2</div>
+        <div class="spot" id="I1" @click="select('I1')">I1</div>
+        <div class="spot" id="I2" @click="select('I2')">I2</div>
         <div class="spot">I3</div>
         <div class="spot">I4</div>
         <div class="spot">I5</div>
@@ -24,11 +24,33 @@
 </template>
 
 <script>
+import { AppState } from "../AppState"
 export default {
-
+  setup() {
+    return {
+      select(id) {
+        if (AppState.selectedSpot != null) {
+          document.getElementById(AppState.selectedSpot).classList.remove('selected')
+          console.log("removed last")
+        }
+        if (AppState.selectedSpot == id) {
+          document.getElementById(id).classList.remove('selected')
+          AppState.selectedSpot = null
+          console.log("cleared self")
+        }
+        else {
+          AppState.selectedSpot = id
+          document.getElementById(id).classList.add('selected')
+          console.log("selected new")
+        }
+      }
+    }
+  }
 }
 </script>
 
 <style>
-
+.selected {
+  background-color: yellow;
+}
 </style>

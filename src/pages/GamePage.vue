@@ -18,14 +18,9 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity"
-import { AppState } from "../AppState"
-import { logger } from "../utils/Logger"
 export default {
 setup() {
   return {
-    select(id) {
-    }
   }
 }
 }
